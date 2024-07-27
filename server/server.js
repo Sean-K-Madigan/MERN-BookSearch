@@ -39,6 +39,11 @@ const startApolloServer = async () => {
       console.log(`GraphQL server ready at http://localhost:${PORT}${server.graphqlPath}`);
     });
   });
+
+  db.on('error', (err) => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  });
 }
 
 startApolloServer();
